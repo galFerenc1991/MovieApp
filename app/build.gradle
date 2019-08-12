@@ -17,7 +17,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
+
+def androidAnnotationVersion = '4.6.0'
+def rxJavaVersion = '2.0.0'
+def rxBindingVersion = '2.0.0'
+def retrofitVersion = '2.3.0'
+def picassoVersion = '2.5.2'
+def adapterVersion = '0.3.0'
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -26,4 +38,25 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    def stethoVersion = '1.5.0'
+
+
+    /*Android annotations*/
+    annotationProcessor "org.androidannotations:androidannotations:${androidAnnotationVersion}"
+    implementation "org.androidannotations:androidannotations-api:${androidAnnotationVersion}"
+
+    /*Utilities*/
+    implementation "com.squareup.picasso:picasso:${picassoVersion}"
+    implementation "com.github.alex-michenko:recycleradapters:${adapterVersion}"
+
+    /*Reactive*/
+    implementation "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    implementation "com.jakewharton.rxbinding2:rxbinding:${rxBindingVersion}"
+
+    /*Networking*/
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+
+    /*Debug*/
+    implementation "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
 }
