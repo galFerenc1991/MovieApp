@@ -56,6 +56,10 @@ public class ToolbarManager {
         }
     }
 
+    public void hideToolbar(boolean isHide) {
+        actionBar.hide();
+    }
+
     public void setTitle(CharSequence title) {
         if (actionBar != null) {
             actionBar.setTitle(title);

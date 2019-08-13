@@ -13,10 +13,15 @@ public class MovieListContract {
         void setMovieList(List<Movie> _movieList);
 
         void addMovieList(List<Movie> _movieList);
+
+        void openMovieDetailScreen(int _movieID);
+
     }
 
     interface Presenter extends RefreshablePresenter {
         void loadNextPage();
+
+        void clickedMovieItem(Movie _movie);
     }
 
 }

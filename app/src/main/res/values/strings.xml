@@ -3,4 +3,7 @@
 
     <string name="drower_open">Open</string>
     <string name="drower_close">Close</string>
+
+    <string name="toolBar_title">Movie</string>
+
 </resources>

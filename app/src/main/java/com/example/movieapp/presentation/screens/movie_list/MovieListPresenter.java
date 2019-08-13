@@ -1,12 +1,17 @@
 package com.example.movieapp.presentation.screens.movie_list;
 
+import android.provider.SyncStateContract;
+
+import com.example.movieapp.data.api.exeptions.ConnectionLostException;
 import com.example.movieapp.data.model.common.Movie;
 import com.example.movieapp.domain.movie_list_reposytory.MovieListModel;
+import com.example.movieapp.presentation.utils.ToastManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 
 public class MovieListPresenter implements MovieListContract.Presenter {
 
@@ -56,7 +61,7 @@ public class MovieListPresenter implements MovieListContract.Presenter {
                     } else {
                         mView.addMovieList(movieListResponse.getResults());
                     }
-                }));
+                }, throwableConsumer));
     }
 
     @Override
@@ -72,6 +77,22 @@ public class MovieListPresenter implements MovieListContract.Presenter {
         mLoadedMovies.clear();
         loadMovieList(1);
     }
+
+    @Override
+    public void clickedMovieItem(Movie _movie) {
+        mView.openMovieDetailScreen(_movie.getId());
+
+    }
+
+    private Consumer<Throwable> throwableConsumer = throwable -> {
+        throwable.printStackTrace();
+        mView.hideProgress();
+        if (throwable instanceof ConnectionLostException) {
+            ToastManager.showToast("Connection Lost");
+        } else {
+            ToastManager.showToast("Something went wrong");
+        }
+    };
 
     @Override
     public void unsubscribe() {

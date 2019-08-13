@@ -9,6 +9,7 @@ import com.example.movieapp.domain.movie_list_reposytory.MovieListRepository;
 import com.example.movieapp.presentation.base.list.EndlessScrollListener;
 import com.example.movieapp.presentation.base.refreshable.RefreshableFragment;
 import com.example.movieapp.presentation.base.refreshable.RefreshablePresenter;
+import com.example.movieapp.presentation.screens.movie_details.MovieDetailFragment_;
 import com.example.movieapp.presentation.screens.movie_list.movie_list_adapter.MovieListAdapter;
 import com.example.movieapp.presentation.utils.ToolbarManager;
 
@@ -17,6 +18,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.StringRes;
 
 import java.util.List;
 
@@ -33,17 +35,23 @@ public class MovieListFragment extends RefreshableFragment implements MovieListC
     @Bean
     protected MovieListRepository mMovieListRepository;
     protected EndlessScrollListener mScrollListener;
+    @StringRes(R.string.toolBar_title)
+    protected String mToolbarTitle;
 
     @AfterInject
     @Override
     public void initPresenter() {
         new MovieListPresenter(this, mMovieListRepository);
+
+        mMovieListAdapter.setOnCardClickListener((view, position, viewType) ->
+                mPresenter.clickedMovieItem(mMovieListAdapter.getItem(position)));
     }
+
 
     @AfterViews
     protected void initUI() {
         mToolbarManager = mActivity.getToolbarManager();
-        mToolbarManager.setTitle("Movies");
+        mToolbarManager.setTitle(mToolbarTitle);
         mToolbarManager.showToolbar(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mScrollListener = new EndlessScrollListener(layoutManager, () -> {
@@ -84,6 +92,11 @@ public class MovieListFragment extends RefreshableFragment implements MovieListC
     public void addMovieList(List<Movie> _movieList) {
         mMovieListAdapter.addMovieListDH(_movieList);
 
+    }
+
+    @Override
+    public void openMovieDetailScreen(int _movieID) {
+        mActivity.replaceFragment(MovieDetailFragment_.builder().mMovieID(_movieID).build());
     }
 
     @Override

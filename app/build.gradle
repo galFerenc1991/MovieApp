@@ -29,8 +29,6 @@ def rxJavaVersion = '2.0.0'
 def rxBindingVersion = '2.0.0'
 def retrofitVersion = '2.3.0'
 def picassoVersion = '2.5.2'
-def adapterVersion = '0.3.0'
-
 
 dependencies {
     implementation "com.android.support:design:${androidSupportVersion}"
@@ -49,7 +47,6 @@ dependencies {
 
     /*Utilities*/
     implementation "com.squareup.picasso:picasso:${picassoVersion}"
-    implementation "com.github.alex-michenko:recycleradapters:${adapterVersion}"
 
     /*Reactive*/
     implementation "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"

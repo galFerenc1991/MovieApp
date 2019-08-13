@@ -20,7 +20,9 @@ import java.util.List;
 @EBean
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> {
 
-    private List<Movie> mMovie = new ArrayList<>();
+    private OnCardClickListener mOnCardClickListener;
+
+    private List<Movie> mMovieList = new ArrayList<>();
 
     public MovieListAdapter() {
     }
@@ -30,12 +32,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> 
     public MovieListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.movie_list_item, parent, false);
-        return new MovieListViewHolder(view);
+        MovieListViewHolder movieListViewHolder = new MovieListViewHolder(view);
+        if (mOnCardClickListener != null) {
+            movieListViewHolder.setListeners(mOnCardClickListener);
+        }
+        return movieListViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MovieListViewHolder holder, int position) {
-        Movie currentMovie = mMovie.get(position);
+        Movie currentMovie = mMovieList.get(position);
         holder.tvTitle.setText(currentMovie.getTitle());
         holder.tvRate.setText(String.valueOf(currentMovie.getVoteCount()));
         holder.tvLike.setText(String.valueOf(currentMovie.getPopularity()));
@@ -48,19 +54,30 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mMovie.size();
+        return mMovieList.size();
     }
 
     public void setMovieList(List<Movie> _list) {
-        mMovie.clear();
-        mMovie.addAll(_list);
+        mMovieList.clear();
+        mMovieList.addAll(_list);
         notifyDataSetChanged();
     }
 
     public void addMovieListDH(List<Movie> _list) {
-        int oldSize = mMovie.size();
-        mMovie.addAll(_list);
-        notifyItemRangeInserted(oldSize, mMovie.size());
+        int oldSize = mMovieList.size();
+        mMovieList.addAll(_list);
+        notifyItemRangeInserted(oldSize, mMovieList.size());
+    }
 
+    public Movie getItem(int position) {
+        if (0 <= position && position < mMovieList.size()) {
+            return mMovieList.get(position);
+        } else {
+            return null;
+        }
+    }
+
+    public void setOnCardClickListener(OnCardClickListener onCardClickListener) {
+        this.mOnCardClickListener = onCardClickListener;
     }
 }

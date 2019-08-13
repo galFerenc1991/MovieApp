@@ -28,4 +28,8 @@ public class MovieListViewHolder extends RecyclerView.ViewHolder {
         tvLike = _view.findViewById(R.id.tvLike_MLI);
         tvOverview = _view.findViewById(R.id.tvOverview_MLI);
     }
+
+    public void setListeners(OnCardClickListener listener) {
+        cvRootContainer.setOnClickListener(view -> listener.onClick(itemView, getAdapterPosition(), getItemViewType()));
+    }
 }

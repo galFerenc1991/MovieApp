@@ -3,6 +3,7 @@ package com.example.movieapp.data.api;
 import com.example.movieapp.MovieApp;
 import com.example.movieapp.data.api.exeptions.ConnectionLostException;
 import com.example.movieapp.data.api.exeptions.TimeoutException;
+import com.example.movieapp.data.service.MovieDetailsService;
 import com.example.movieapp.data.service.MovieListService;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -60,6 +61,11 @@ public class Rest {
 
     public MovieListService getMovieListService() {
         return retrofit.create(MovieListService.class);
+    }
+
+    public MovieDetailsService getMovieDetailsService() {
+        return retrofit.create(MovieDetailsService.class);
+
     }
 
 }
