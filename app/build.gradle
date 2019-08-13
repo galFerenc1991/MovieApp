@@ -23,6 +23,7 @@ android {
     }
 }
 
+def androidSupportVersion = '26.1.0'
 def androidAnnotationVersion = '4.6.0'
 def rxJavaVersion = '2.0.0'
 def rxBindingVersion = '2.0.0'
@@ -32,6 +33,7 @@ def adapterVersion = '0.3.0'
 
 
 dependencies {
+    implementation "com.android.support:design:${androidSupportVersion}"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

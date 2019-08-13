@@ -3,6 +3,8 @@ package com.example.movieapp.data.api;
 public abstract class RestConstants {
     static final String BASE_URL = "https://api.themoviedb.org/";
     public static final String API_KEY = "4423e8392de79824a85f90ecf9fc6c55";
+    public static final String BASE_IMAGE_URL = "https://image.tmdb.org";
+    public static final String IMAGE_URL_COMPONENT = "/t/p/w500";
 
     static final String HEADER_CONTENT_TYPE = "Content-Type";
     static final String HEADER_VALUE_HTML = "text/html";

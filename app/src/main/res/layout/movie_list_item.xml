@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvContainer_MLI"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="@dimen/padding_default"
+    app:cardCornerRadius="15dp">
+
+    <LinearLayout
+        android:id="@+id/rlRootLayout_MLI"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryTransparent">
+
+        <ImageView
+            android:id="@+id/ivMoviePoster_MLI"
+            android:layout_width="150dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_half"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMovieName_MLI"
+                style="@style/MovieListTitleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Title" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvRate_MLI"
+                    style="@style/MovieListTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_favorite"
+                    android:hint="123" />
+
+                <TextView
+                    android:id="@+id/tvLike_MLI"
+                    style="@style/MovieListTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:drawableStart="@drawable/ic_star"
+                    android:hint="234" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvOverview_MLI"
+                style="@style/MovieOverviewTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:hint="OVERVIEW" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
