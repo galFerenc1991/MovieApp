@@ -27,4 +27,7 @@
     <dimen name="text_size_title">24sp</dimen>
     <dimen name="text_size_splash_big">66sp</dimen>
 
+    --Image-->
+    <dimen name="movie_details_image_size">400dp</dimen>
+
 </resources>

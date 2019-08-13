@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_default"
                     android:layout_marginEnd="@dimen/margin_default"
+                    android:maxLines="1"
                     android:drawableStart="@drawable/ic_star"
                     android:hint="234" />
 
@@ -64,7 +65,8 @@
                 style="@style/MovieOverviewTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_default"
+                android:ellipsize="end"
+                android:maxLines="6"
                 android:hint="OVERVIEW" />
 
         </LinearLayout>

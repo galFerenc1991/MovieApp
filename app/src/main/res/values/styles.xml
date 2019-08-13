@@ -38,6 +38,10 @@
 
     <style name="MovieOverviewTextStyle">
         <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="MovieDetailOverviewTextStyle" parent="MovieOverviewTextStyle">
         <item name="android:textSize">@dimen/text_size_default</item>
     </style>
 

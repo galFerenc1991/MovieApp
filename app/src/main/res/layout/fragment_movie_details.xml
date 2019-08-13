@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="@dimen/movie_details_image_size">
 
         <ImageView
             android:id="@+id/ivMoviePoster_FMD"
@@ -74,7 +74,7 @@
 
     <TextView
         android:id="@+id/tvOverview_FMD"
-        style="@style/MovieOverviewTextStyle"
+        style="@style/MovieDetailOverviewTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
