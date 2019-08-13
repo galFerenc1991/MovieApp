@@ -42,7 +42,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MovieListViewHolder holder, int position) {
         Movie currentMovie = mMovieList.get(position);
-        holder.tvTitle.setText(currentMovie.getTitle());
+        holder.tvTitle.setText(currentMovie.getOriginalTitle());
         holder.tvRate.setText(String.valueOf(currentMovie.getVoteCount()));
         holder.tvLike.setText(String.valueOf(currentMovie.getPopularity()));
         holder.tvOverview.setText(currentMovie.getOverview());

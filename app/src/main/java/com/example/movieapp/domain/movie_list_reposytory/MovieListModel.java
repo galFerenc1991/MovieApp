@@ -7,6 +7,6 @@ import io.reactivex.Observable;
 
 public interface MovieListModel {
 
-    Observable<ListResponse<Movie>> getMovieList(int _page);
+    Observable<ListResponse<Movie>> getMovieList(int _page, String _searchText);
 
 }

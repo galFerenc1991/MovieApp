@@ -7,6 +7,8 @@ import com.example.movieapp.presentation.base.refreshable.RefreshablePresenter;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 public class MovieListContract {
 
     interface View extends ContentView, BaseView<Presenter> {
@@ -22,6 +24,8 @@ public class MovieListContract {
         void loadNextPage();
 
         void clickedMovieItem(Movie _movie);
+
+        void setSearchObservable(Observable<String> _searchObservable);
     }
 
 }

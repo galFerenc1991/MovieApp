@@ -86,7 +86,7 @@ public class MovieDetailFragment extends ContentFragment implements MovieDetailC
     @Override
     public void setMovieDetails(MovieDetails _movieDetails) {
 
-        tvMovieName.setText(_movieDetails.getTitle());
+        tvMovieName.setText(_movieDetails.getOriginalTitle());
         tvRate.setText(String.valueOf(_movieDetails.getVoteCount()));
         tvLike.setText(String.valueOf(_movieDetails.getPopularity()));
         tvLanguage.setText(_movieDetails.getOriginalLanguage());

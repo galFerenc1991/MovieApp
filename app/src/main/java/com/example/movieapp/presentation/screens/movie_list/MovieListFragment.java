@@ -1,5 +1,10 @@
 package com.example.movieapp.presentation.screens.movie_list;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +16,7 @@ import com.example.movieapp.presentation.base.refreshable.RefreshableFragment;
 import com.example.movieapp.presentation.base.refreshable.RefreshablePresenter;
 import com.example.movieapp.presentation.screens.movie_details.MovieDetailFragment_;
 import com.example.movieapp.presentation.screens.movie_list.movie_list_adapter.MovieListAdapter;
+import com.example.movieapp.presentation.screens.movie_list.search.RxSearchObservable;
 import com.example.movieapp.presentation.utils.ToolbarManager;
 
 import org.androidannotations.annotations.AfterInject;
@@ -38,6 +44,9 @@ public class MovieListFragment extends RefreshableFragment implements MovieListC
     @StringRes(R.string.toolBar_title)
     protected String mToolbarTitle;
 
+    private SearchView mSearchView;
+
+
     @AfterInject
     @Override
     public void initPresenter() {
@@ -63,8 +72,6 @@ public class MovieListFragment extends RefreshableFragment implements MovieListC
         rvMovieList.setLayoutManager(layoutManager);
         rvMovieList.setAdapter(mMovieListAdapter);
         rvMovieList.addOnScrollListener(mScrollListener);
-
-        mPresenter.subscribe();
     }
 
     @Override
@@ -97,6 +104,17 @@ public class MovieListFragment extends RefreshableFragment implements MovieListC
     @Override
     public void openMovieDetailScreen(int _movieID) {
         mActivity.replaceFragment(MovieDetailFragment_.builder().mMovieID(_movieID).build());
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.search_menu, menu);
+
+        mSearchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        mPresenter.setSearchObservable(RxSearchObservable.fromView(mSearchView));
+
+        mPresenter.subscribe();
     }
 
     @Override

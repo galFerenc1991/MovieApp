@@ -1,10 +1,13 @@
 package com.example.movieapp.domain.movie_list_reposytory;
 
+import android.text.TextUtils;
+
 import com.example.movieapp.data.api.Rest;
 import com.example.movieapp.data.api.RestConstants;
 import com.example.movieapp.data.model.base.ListResponse;
 import com.example.movieapp.data.model.common.Movie;
 import com.example.movieapp.data.service.MovieListService;
+import com.example.movieapp.data.service.MovieSearchService;
 import com.example.movieapp.domain.NetworkRepository;
 
 import org.androidannotations.annotations.AfterInject;
@@ -21,14 +24,20 @@ public class MovieListRepository extends NetworkRepository implements MovieListM
     protected Rest rest;
 
     private MovieListService mMovieListService;
+    private MovieSearchService mMovieSearchService;
 
     @AfterInject
     protected void initServices() {
         mMovieListService = rest.getMovieListService();
+        mMovieSearchService = rest.getMovieSearchService();
     }
 
+
     @Override
-    public Observable<ListResponse<Movie>> getMovieList(int _page) {
-        return getNetworkObservable(mMovieListService.getAllMovies(RestConstants.API_KEY, _page));
+    public Observable<ListResponse<Movie>> getMovieList(int _page, String _searchText) {
+        if (!TextUtils.isEmpty(_searchText))
+            return getNetworkObservable(mMovieSearchService.searchMovie(RestConstants.API_KEY, _searchText, _page));
+        else
+            return getNetworkObservable(mMovieListService.getAllMovies(RestConstants.API_KEY, _page));
     }
 }
