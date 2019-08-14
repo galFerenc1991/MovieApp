@@ -1,7 +1,6 @@
 package com.example.movieapp.domain.movie_details_repository;
 
 import com.example.movieapp.data.api.Rest;
-import com.example.movieapp.data.api.RestConstants;
 import com.example.movieapp.data.model.common.MovieDetails;
 import com.example.movieapp.data.service.MovieDetailsService;
 import com.example.movieapp.domain.NetworkRepository;
@@ -28,6 +27,6 @@ public class MovieDetailsRepository extends NetworkRepository implements MovieDe
 
     @Override
     public Observable<MovieDetails> getMovieDetails(int _movieID) {
-        return getNetworkObservable(mMovieDetailService.getMovieDetails(_movieID, RestConstants.API_KEY));
+        return getNetworkObservable(mMovieDetailService.getMovieDetails(_movieID));
     }
 }

@@ -3,7 +3,6 @@ package com.example.movieapp.domain.movie_list_reposytory;
 import android.text.TextUtils;
 
 import com.example.movieapp.data.api.Rest;
-import com.example.movieapp.data.api.RestConstants;
 import com.example.movieapp.data.model.base.ListResponse;
 import com.example.movieapp.data.model.common.Movie;
 import com.example.movieapp.data.service.MovieListService;
@@ -36,8 +35,8 @@ public class MovieListRepository extends NetworkRepository implements MovieListM
     @Override
     public Observable<ListResponse<Movie>> getMovieList(int _page, String _searchText) {
         if (!TextUtils.isEmpty(_searchText))
-            return getNetworkObservable(mMovieSearchService.searchMovie(RestConstants.API_KEY, _searchText, _page));
+            return getNetworkObservable(mMovieSearchService.searchMovie(_searchText, _page));
         else
-            return getNetworkObservable(mMovieListService.getAllMovies(RestConstants.API_KEY, _page));
+            return getNetworkObservable(mMovieListService.getAllMovies(_page));
     }
 }

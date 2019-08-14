@@ -48,7 +48,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListViewHolder> 
         holder.tvOverview.setText(currentMovie.getOverview());
 
         Picasso.with(holder.itemView.getContext())
-                .load(RestConstants.BASE_IMAGE_URL + RestConstants.IMAGE_URL_COMPONENT + currentMovie.getPosterPath())
+                .load(RestConstants.BASE_IMAGE_URL + currentMovie.getPosterPath())
                 .into(holder.ivPoster);
     }
 

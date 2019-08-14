@@ -18,9 +18,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import javax.annotation.Nullable;
-
-
 @EFragment
 public abstract class ContentFragment extends BaseFragment implements ContentView {
 
@@ -38,9 +35,8 @@ public abstract class ContentFragment extends BaseFragment implements ContentVie
 
     protected abstract BasePresenter getPresenter();
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View parent = inflater.inflate(R.layout.view_content, container, false);
         ViewGroup flContent = parent.findViewById(R.id.flContent_VC);
         View.inflate(getActivity(), getLayoutRes(), flContent);

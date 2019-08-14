@@ -93,7 +93,7 @@ public class MovieDetailFragment extends ContentFragment implements MovieDetailC
         tvOverview.setText(_movieDetails.getOverview());
 
         Picasso.with(getContext())
-                .load(RestConstants.BASE_IMAGE_URL + RestConstants.IMAGE_URL_COMPONENT + _movieDetails.getBackdropPath())
+                .load(RestConstants.BASE_IMAGE_URL + _movieDetails.getBackdropPath())
                 .fit()
                 .centerCrop()
                 .into(ivMoviePoster);
